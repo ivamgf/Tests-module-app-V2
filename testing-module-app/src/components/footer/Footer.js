@@ -1,10 +1,11 @@
 import React from "react";
 
 import './footer.css';
+import Buttons from '../footerBtn/FooterBtn';
 
 const Footer = () => (
     <footer id="main-footer">
-        Testing Module App - License By Creative Commons V 1.0 Universal.
+        <Buttons />        
     </footer>
 );
 

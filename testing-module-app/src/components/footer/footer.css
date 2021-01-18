@@ -1,7 +1,7 @@
 footer#main-footer {
 	width: 100%;
     height: 200px;
-    background: #1f1111;
+    background: #0b2579;
 	font-size: 12px;
 	font-weight: bold;
 	color: #fff;
@@ -10,3 +10,4 @@ footer#main-footer {
     align-items: center;
     padding-left: 5%;
 }
+

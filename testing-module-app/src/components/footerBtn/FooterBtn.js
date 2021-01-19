@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GroupOrientation() {
   const classes = useStyles();
+  
+  const linkAbout = () => {
+    window.location.pathname = '/about';
+  };
 
   return (
     <div className={classes.root}>
@@ -32,7 +36,7 @@ export default function GroupOrientation() {
                     variant="text"
                 >
                     <Button>Testing Module App Version 1.0.0</Button>
-                    <Button>About</Button>
+                    <Button onClick={linkAbout}>About</Button>
                 </ButtonGroup>
 
                 <ButtonGroup

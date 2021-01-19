@@ -18,7 +18,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import PeopleIcon from '@material-ui/icons/People';
 import InfoIcon from '@material-ui/icons/Info';
 
@@ -95,6 +94,26 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
+  const linkHome = () => {
+    window.location.pathname = '/';
+  };
+
+  const linkRegister = () => {
+    window.location.pathname = '/register';
+  };
+
+  const linkRecord = () => {
+    window.location.pathname = '/record';
+  };
+
+  const linkAbout = () => {
+    window.location.pathname = '/about';
+  };
+
+  const linkContact = () => {
+    window.location.pathname = '/contact';
+  };
 
   return (
     <div className={classes.root}>
@@ -137,26 +156,45 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           {['Home'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <HomeIcon /> : <InsertDriveFileIcon />}</ListItemIcon>
+            <ListItem button key={text} onClick={linkHome}>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+          
+        </List>
+        <Divider />
+        <List>
+          {['Register'].map((text, index) => (
+            <ListItem button key={text} onClick={linkRegister}>
+              <ListItemIcon><PeopleIcon /></ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <List>
+          {['Record'].map((text, index) => (
+            <ListItem button key={text} onClick={linkRecord}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['Register', 'Record'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <PeopleIcon />}</ListItemIcon>
+          {['About'].map((text, index) => (
+            <ListItem button key={text} onClick={linkAbout}>
+              <ListItemIcon><InfoIcon /></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
-        <Divider />
         <List>
-          {['About', 'Contact'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InfoIcon /> : <MailIcon />}</ListItemIcon>
+          {['Contact'].map((text, index) => (
+            <ListItem button key={text} onClick={linkContact}>
+              <ListItemIcon><MailIcon /></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}

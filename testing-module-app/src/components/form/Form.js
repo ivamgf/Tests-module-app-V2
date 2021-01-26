@@ -6,9 +6,13 @@ import RegisterBtn from '../../components/registerBtn/RegisterBtn';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginLeft: '7%',
     '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
+      margin: theme.spacing(2),
+      width: '30ch',
+      display: 'flex',
+      float: 'left',
+      flexWrap: 'wrap',
     },
   },
 }));

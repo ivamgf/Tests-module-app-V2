@@ -1,71 +1,125 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PersonIcon from '@material-ui/icons/Person';
-import './lists.css';
-import UpdateBtn from '../updateBtn/UpdateBtn';
 import DeleteBtn from '../deleteBtn/DeleteBtn';
+import UpdateBtn from '../updateBtn/UpdateBtn';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '80%',
-    marginTop: '5%',
-    background: '#6eaaff',
+    margin: '5%',    
   },
-  card: {
-    background: '#45b3ff',
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    flexBasis: '10.33%',
+    flexShrink: 0,
+    color: '#FFF',
+    fontWeight: 'bold',
   },
-  id: {
-    color: 'white',
+  secondaryHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    color: '#FFF',
   },
-  fields: {
-    fontSize: 14,
-    textAlign: 'left',
+  body: {
+    fontSize: theme.typography.pxToRem(15),
+    flexBasis: '30.33%',
+    flexShrink: 0,
   },
-  field1: {
-    fontSize: 14,
-    textAlign: 'left',
-    marginTop: '3%',
+  secondaryBody: {
+    fontSize: theme.typography.pxToRem(15),
+    color: theme.palette.text.secondary,
   },
-  field2: {
-    marginLeft: '25%',
-  },
-  field3: {
-    marginLeft: '25%',
+  accordionBody: {
+    background: '#0059b3',
   }
 }));
 
-export default function SimpleCard() {
+export default function ControlledAccordions() {
   const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
-    <Card className={classes.root}>
-      <CardActions className={classes.fields}>
-        <PersonIcon />
-        <span className={classes.id}>User ID:</span >
-      </CardActions>
-      <CardContent className={classes.card}>
-        <Typography className={classes.fields}>
-          <span className={classes.field1}>Name:</span>
-          <span className={classes.field2}>E-mail:</span>
-          <span className={classes.field3}>Phone:</span>
-        </Typography>
-        <Typography className={classes.field1}>
-          <span>Address:</span >
-          <span className={classes.field2}>Number:</span>
-          <span className={classes.field3}>Postal Code:</span>
-        </Typography>
-        <Typography className={classes.field1}>
-          <span>City:</span >
-          <span className={classes.field2}>Province:</span>          
-        </Typography>        
-      </CardContent>
-      <CardActions>
-        <UpdateBtn /><DeleteBtn />
-      </CardActions>
-    </Card>
+    <div className={classes.root}>
+      <Accordion  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+        <AccordionSummary 
+        className={classes.accordionBody}
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography className={classes.heading}>
+            <PersonIcon />
+          </Typography>
+          <Typography className={classes.heading}>
+            ID:
+          </Typography>
+          <Typography className={classes.secondaryHeading}>1</Typography>          
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography className={classes.body}>
+            Name:
+          </Typography>          
+          <Typography className={classes.secondaryBody}>x</Typography>          
+        </AccordionDetails>
+        <AccordionDetails>
+          <Typography className={classes.body}>
+            E-mail:
+          </Typography>
+          <Typography className={classes.secondaryBody}>x</Typography>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Typography className={classes.body}>
+            Phone:
+          </Typography>
+          <Typography className={classes.secondaryBody}>x</Typography>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Typography className={classes.body}>
+            Code Postal:
+          </Typography>
+          <Typography className={classes.secondaryBody}>x</Typography>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Typography className={classes.body}>
+            Address:
+          </Typography>
+          <Typography className={classes.secondaryBody}>x</Typography>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Typography className={classes.body}>
+            Number:
+          </Typography>
+          <Typography className={classes.secondaryBody}>x</Typography>
+        </AccordionDetails>
+        <AccordionDetails>
+        <Typography className={classes.body}>
+            City:
+          </Typography>
+          <Typography className={classes.secondaryBody}>x</Typography>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Typography className={classes.body}>
+            Province:
+          </Typography>
+          <Typography className={classes.secondaryBody}>x</Typography>
+        </AccordionDetails>
+        <Divider />
+        <AccordionDetails>
+          <UpdateBtn /> 
+          <DeleteBtn />  
+        </AccordionDetails>           
+      </Accordion>
+      
+    </div>
   );
 }
